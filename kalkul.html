@@ -1,0 +1,61 @@
+<!DOCTYPE HTML> 
+
+ <head> 
+	<meta charset=utf-8> 
+	<title>Kalkulatorek</title>
+	<link rel="stylesheet" type="text/css" href="styling.css">
+ </head>
+ 
+		<body> 
+		<div id="text">	
+
+		<h1> Kalkulator oparty na JS </h1>
+		<form>
+			Podaj pierwszą liczbę: <input type="textbox" name="liczba1" id="liczba1"></br>
+			Podaj drugą liczbę: <input type="textbox" name="liczba2" id="liczba2"></br>
+			Wybierz rodzaj działania: <select id="oper">
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+			</select>
+		</form>
+			<p id="wyniczek">Wynik: <span id="wynik"></span></p>
+			
+		<script>
+
+		function kalk(){
+				var liczba1 = document.getElementById('liczba1').value;
+				var liczba2 = document.getElementById('liczba2').value;
+
+				if(document.getElementById('oper').value == "+"){
+				var wynik = parseInt(liczba1) + parseInt(liczba2);
+				document.getElementById('wynik').innerHTML = wynik;
+				return wynik;
+				}
+				
+				else if(document.getElementById('oper').value == "-"){
+				var wynik = parseInt(liczba1) - parseInt(liczba2);
+				document.getElementById('wynik').innerHTML = wynik;
+				return wynik;
+				}	
+				
+				else if(document.getElementById('oper').value == "*"){
+				var wynik = parseInt(liczba1) * parseInt(liczba2);
+				document.getElementById('wynik').innerHTML = wynik;
+				return wynik;
+				}
+				
+				else if(document.getElementById('oper').value == "/"){
+				var wynik = parseInt(liczba1) / parseInt(liczba2);
+				document.getElementById('wynik').innerHTML = wynik;
+				return wynik;
+				}
+		}
+		</script>
+		
+		<button id="przycisk" type="button" onclick="kalk(liczba1, oper, liczba2)">Policz</button>
+		
+		</div>
+		</body>
+ </html> 
