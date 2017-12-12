@@ -13,13 +13,21 @@ body {
  	font-size: 19px;
  }
 
-#przycisk {
+.przycisk {
 	background-color: #008CBA;
 	border-radius: 4px;
 	border-color: #000;
 	font-size: 16px;
 }
 
-#przycisk:hover {
+.przycisk:hover {
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.9);
+}
+
+#binar {
+	display: none;
+}
+
+#kalkulator {
+	display: block;
 }

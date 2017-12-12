@@ -8,20 +8,31 @@
  
 		<body> 
 		<div id="text">	
+			<p id="test">
 
-		<h1> Kalkulator oparty na JS </h1>
-		<form>
-			Podaj pierwszą liczbę: <input type="textbox" name="liczba1" id="liczba1"></br>
-			Podaj drugą liczbę: <input type="textbox" name="liczba2" id="liczba2"></br>
-			Wybierz rodzaj działania: <select id="oper">
-			<option value="+">+</option>
-			<option value="-">-</option>
-			<option value="*">*</option>
-			<option value="/">/</option>
-			</select>
-		</form></br>
+			<h1> Kalkulator oparty na JS </h1>
 
-			<p><span id="wynik"></span></p> 
+		<div id="kalkulator">
+			<form>
+				Podaj pierwszą liczbę: <input type="textbox" name="liczba1" id="liczba1"></br>
+				Podaj drugą liczbę: <input type="textbox" name="liczba2" id="liczba2"></br>
+				Wybierz rodzaj działania: <select id="oper">
+				<option value="+">dodawanie</option>
+				<option value="-">odejmowanie</option>
+				<option value="*">mnożenie</option>
+				<option value="/">dzielenie</option>
+				</select>
+			</form></br>
+		</div>
+
+		<div id="binar">
+			<form>
+				Podaj liczbę dziesiętną do przetworzenia: <input type="textbox" name="dziesietna"></br>
+				Podaj liczbę binarną do przetworzenia: <input type="textbox" name="binarna">
+			</form></br>
+		</div>
+
+		<p><span id="wynik"></span></p> 
 			
 		<script>
 
@@ -29,38 +40,62 @@
 				var liczba1 = document.getElementById('liczba1').value;
 				var liczba2 = document.getElementById('liczba2').value;
 
-				if(document.getElementById('oper').value == "+" && document.getElementById('liczba1').value != "" && document.getElementById('liczba2').value != ""){
+				if(document.getElementById('oper').value == "+" && liczba1 != "" && liczba2 != ""){
 				var wynik = parseInt(liczba1) + parseInt(liczba2);
 				document.getElementById('wynik').innerHTML = wynik;
 				return wynik;
 				}
 				
-				else if(document.getElementById('oper').value == "-" && document.getElementById('liczba1').value != "" && document.getElementById('liczba2').value != ""){
+				else if(document.getElementById('oper').value == "-" && liczba1 != "" && liczba2 != ""){
 				var wynik = parseInt(liczba1) - parseInt(liczba2);
 				document.getElementById('wynik').innerHTML = wynik;
 				return wynik;
 				}	
 				
-				else if(document.getElementById('oper').value == "*" && document.getElementById('liczba1').value != "" && document.getElementById('liczba2').value != ""){
+				else if(document.getElementById('oper').value == "*" && liczba1 != "" && liczba2 != ""){
 				var wynik = parseInt(liczba1) * parseInt(liczba2);
 				document.getElementById('wynik').innerHTML = wynik;
 				return wynik;
 				}
 				
-				else if(document.getElementById('oper').value == "/" && document.getElementById('liczba1').value != "" && document.getElementById('liczba2').value != ""){
+				else if(document.getElementById('oper').value == "/" && liczba1 != "" && liczba2 != ""){
 				var wynik = parseInt(liczba1) / parseInt(liczba2);
 				document.getElementById('wynik').innerHTML = wynik;
 				return wynik;
 				}
 
-				else{
-				var wynik = document.getElementById('wynik').innerHTML = "Zastanów się co wpisałeś";
-				return wynik;
+				else if(isNaN(liczba1) == true || isNaN(liczba2) == true || (isNaN(liczba1) == true && isNaN(liczba2) == true)) {		//do dopracowania, nie lapie przy dwoch polach z literami 
+					var wynik = document.getElementById('wynik').innerHTML = "Podane dane nie są liczbami";
+					return wynik;
 				}
-		}
+
+				else{
+					var wynik = document.getElementById('wynik').innerHTML = "Zastanów się co wpisałeś";
+					return wynik;
+				}
+			}
+
+				function binarka(){															//liczenie binarki
+	
+				}
+
+				/*var przejscie1 = function(){			//przejscie z kalkulatora na konwerter
+					var elem1 = document.getElementById('kalkulator').style.display = 'none';
+					var elem2 = document.getElementById('binar').style.display = 'block';	
+					return [elem1, elem2];
+				}
+
+				var przejscie2 = function(){			//przejscie z konwertera na kalkulator
+					var elem1 = document.getElementById('kalkulator').style.display = 'block';
+					var elem2 = document.getElementById('binar').style.display = 'none';
+					return [elem1, elem2];
+				}*/
 		</script>
+
 		
-		<button id="przycisk" type="button" onclick="kalk(liczba1, oper, liczba2)">Policz</button>
+		<button class="przycisk" type="button" onclick="kalk(liczba1, oper, liczba2)">Policz</button></br></br>
+		<button class="przycisk" type="button" onclick="(document.getElementById('kalkulator').style.display = 'block') && (document.getElementById('binar').style.display = 'none')">Kalkulator</button>
+		<button class="przycisk" type="button" onclick="(document.getElementById('kalkulator').style.display = 'none') && (document.getElementById('binar').style.display = 'block')">Konwerter</button>
 		
 		</div>
 		</body>
